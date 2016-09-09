@@ -1,0 +1,19 @@
+quill:
+  css:
+    theme:
+      lib/quill.snow.css: {}
+  js:
+    lib/quill.js: { minified: false }
+  version: VERSION
+
+drupal.quill:
+  css:
+    theme:
+      css/quill.css: {}
+  dependencies:
+    - core/drupalSettings
+    - editor/drupal.editor
+    - quill/quill
+  js:
+    js/quill.js: {}
+  version: VERSION
