@@ -1,9 +1,9 @@
 quill:
   css:
     theme:
-      lib/quill.snow.css: {}
+      vendor/quill/quill.snow.css: { minified: false }
   js:
-    lib/quill.js: { minified: false }
+      vendor/quill/quill.min.js: { minified: true }
   version: VERSION
 
 drupal.quill:
