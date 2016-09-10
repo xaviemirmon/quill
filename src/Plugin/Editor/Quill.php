@@ -35,7 +35,7 @@ class Quill extends EditorBase {
 
     $form['default_editor'] = array(
       '#type' => 'value',
-      '#value' => 'quill',
+      '#value' => $settings['default_editor'],
     );
 
     return $form;
