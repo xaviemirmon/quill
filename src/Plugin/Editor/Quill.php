@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\quill\Plugin\Editor\Quill.
- */
 
 namespace Drupal\quill\Plugin\Editor;
 
@@ -21,7 +17,6 @@ use Drupal\editor\Plugin\EditorBase;
  *   is_xss_safe = FALSE,
  * )
  */
-
 class Quill extends EditorBase {
 
   /**
@@ -45,13 +40,14 @@ class Quill extends EditorBase {
 
     return $form;
   }
+
   /**
    * {@inheritdoc}
    */
   public function getLibraries(Editor $editor) {
 
     $libraries = [
-      'quill/drupal.quill'
+      'quill/drupal.quill',
     ];
     return $libraries;
   }
