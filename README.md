@@ -41,5 +41,4 @@ TO DO
 -----
 
 * Enable configuration of editor toolbar.
-* Allow selection of Quill editor theme (currently defaults to Snow).
 * Allow configuration of Quill modules.
