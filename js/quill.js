@@ -3,8 +3,11 @@
 
   Drupal.editors.quill = {
     attach: function (element, format) {
+
       var $element = $('#' + element.id);
       var $form = $element.parents('form');
+      var settings = format.editorSettings;
+      console.log(settings);
 
       $element.wrap('<div class="editable-wrapper"/>');
       var $parent = $element.parent();
@@ -23,7 +26,7 @@
 
       var quill = new Quill('.quill-' + element.id, {
         placeholder: 'Compose an epic...',
-        theme: 'snow'
+        theme: settings.theme
       });
 
     },
