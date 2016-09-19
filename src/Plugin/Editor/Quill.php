@@ -23,7 +23,10 @@ class Quill extends EditorBase {
    * {@inheritdoc}
    */
   public function getDefaultSettings() {
-    $settings['theme'] = 'snow';
+    $settings = [
+      'placeholder' => 'Compose an epic...',
+      'theme' => 'snow',
+    ];
     return $settings;
   }
 
@@ -33,12 +36,18 @@ class Quill extends EditorBase {
   public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
     $settings = $editor->getSettings();
 
-    $form['theme'] = array(
+    $form['placeholder'] = [
+      '#default_value' => $settings['placeholder'],
+      '#title' => $this->t('Placeholder'),
+      '#type' => 'textfield',
+    ];
+
+    $form['theme'] = [
       '#default_value' => $settings['theme'],
       '#options' => ['bubble' => 'Bubble', 'snow' => 'Snow'],
       '#title' => $this->t('Theme'),
       '#type' => 'select',
-    );
+    ];
 
     return $form;
   }

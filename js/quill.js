@@ -24,7 +24,7 @@
       });
 
       var quill = new Quill('.ql-' + element.id, {
-        placeholder: 'Compose an epic...',
+        placeholder: settings.placeholder,
         theme: settings.theme
       });
 
