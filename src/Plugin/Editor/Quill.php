@@ -23,7 +23,7 @@ class Quill extends EditorBase {
    * {@inheritdoc}
    */
   public function getDefaultSettings() {
-    $settings['default_editor'] = '';
+    $settings['theme'] = 'snow';
     return $settings;
   }
 
@@ -33,9 +33,11 @@ class Quill extends EditorBase {
   public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
     $settings = $editor->getSettings();
 
-    $form['default_editor'] = array(
-      '#type' => 'value',
-      '#value' => $settings['default_editor'],
+    $form['theme'] = array(
+      '#default_value' => $settings['theme'],
+      '#options' => ['bubble' => 'Bubble', 'snow' => 'Snow'],
+      '#title' => $this->t('Theme'),
+      '#type' => 'select',
     );
 
     return $form;
@@ -56,9 +58,7 @@ class Quill extends EditorBase {
    * {@inheritdoc}
    */
   public function getJSSettings(Editor $editor) {
-    $settings = [];
-    $settings = $editor->getSettings();
-    return $settings;
+    return $editor->getSettings();
   }
 
 }
