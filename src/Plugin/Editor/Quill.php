@@ -15,6 +15,9 @@ use Drupal\editor\Plugin\EditorBase;
  *   supports_content_filtering = FALSE,
  *   supports_inline_editing = FALSE,
  *   is_xss_safe = FALSE,
+ *   supported_element_types = {
+ *     "textarea"
+ *   }
  * )
  */
 class Quill extends EditorBase {
