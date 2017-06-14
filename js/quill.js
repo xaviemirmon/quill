@@ -3,9 +3,7 @@
 
   Drupal.editors.quill = {
     attach: function (element, format) {
-
       var $element = $('#' + element.id);
-      var $form = $element.parents('form');
       var settings = format.editorSettings;
 
       $element.wrap('<div class="ql-wrapper"/>');
@@ -14,35 +12,34 @@
       $element.addClass('ql-field');
       $element.hide();
 
-      $form.submit(function(){
-        $('.editable-wrapper').each(function(){
-          var editorText = $(this).find('.ql-editor').html();
-          var textArea = $(this).find('.ql-field');
-          textArea.attr('data-editor-value-is-changed', 'true');
-          textArea.val(editorText);
-        });
-      });
-
       var quill = new Quill('.ql-' + element.id, {
         placeholder: settings.placeholder,
         theme: settings.theme
       });
-
     },
+
     detach: function (element, format, trigger) {
-      var $field = $('#' + element.id);
+      if (trigger === 'unload') {
+        $('#' + element.id).hide();
+      }
+    },
+
+    onChange: function (element, callback) {
+      // Update textarea value when the editor div is loaded or changed.
       $('.ql-wrapper').each(function(){
         var quillText = $(this).find('.ql-editor').html();
         var textArea = $(this).find('textarea');
-        textArea.attr( 'data-editor-value-is-changed', 'true' );
+        textArea.attr('data-editor-value-is-changed', 'true');
         textArea.val(quillText);
       });
-      $field.show();
-      $('.editable-wrapper > div').unwrap();
-      $('.ql-editable').remove();
-      $('.ql-toolbar').remove();
-    },
-    onChange: function (element, callback) {
+
+      // Update the value of the textarea when the ql-editor DOM subtree is
+      // modified. This is triggered when the user types into the editor div.
+      $('.ql-editor').off().on('DOMSubtreeModified', function() {
+        var $textarea = $(this).closest('.ql-wrapper').find('textarea');
+        $textarea.val($(this).html());
+        $textarea.attr( 'data-editor-value-is-changed', 'true' );
+      });
     }
   };
 
