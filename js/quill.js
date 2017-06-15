@@ -6,7 +6,8 @@
       var $element = $('#' + element.id);
       var settings = format.editorSettings;
 
-      $element.wrap('<div class="ql-wrapper"/>');
+
+      $element.wrap('<div class="ql-wrapper" />');
       var $parent = $element.parent();
       $parent.prepend('<div class="ql-editable ql-' + element.id + '">' + $element.val() +'</div>');
       $element.addClass('ql-field');
@@ -19,9 +20,19 @@
     },
 
     detach: function (element, format, trigger) {
-      if (trigger === 'unload') {
-        $('#' + element.id).hide();
+      var $element = $('#' + element.id);
+      // Do not destroy the editor if we are updating the underlying element.
+      if (trigger === 'serialize') {
+        return;
       }
+
+      // Otherwise, remove the Quill editor elements.
+      $element.show();
+      $element.siblings('.ql-editable').unwrap();
+      $element.siblings('.ql-editable').remove();
+      $element.siblings('.ql-tooltip').remove();
+      $element.siblings('.ql-toolbar').remove();
+      $element.siblings('.ql-editor').remove();
     },
 
     onChange: function (element, callback) {
