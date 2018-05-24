@@ -1,18 +1,30 @@
 quill.bubble:
+  remote: https://github.com/quilljs/quill
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/quilljs/quill/blob/develop/LICENSE
   css:
     theme:
-      vendor/quill/quill.bubble.css: { minified: false }
+      //cdn.quilljs.com/1.0.4/quill.bubble.css: { external: true, minified: false }
   version: 1.0.4
 
 quill.js:
+  remote: https://github.com/quilljs/quill
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/quilljs/quill/blob/develop/LICENSE
   js:
-    vendor/quill/quill.min.js: { minified: true }
+    //cdn.quilljs.com/1.0.4/quill.min.js: { external: true, minified: true }
   version: 1.0.4
 
 quill.snow:
+  remote: https://github.com/quilljs/quill
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/quilljs/quill/blob/develop/LICENSE
   css:
     theme:
-      vendor/quill/quill.snow.css: { minified: false }
+      //cdn.quilljs.com/1.0.4/quill.snow.css: { external: true, minified: false }
   version: 1.0.4
 
 drupal.quill:
