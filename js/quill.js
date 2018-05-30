@@ -6,7 +6,6 @@
       var $element = $('#' + element.id);
       var settings = format.editorSettings;
 
-
       $element.wrap('<div class="ql-wrapper" />');
       var $parent = $element.parent();
       $parent.prepend('<div class="ql-editable ql-' + element.id + '">' + $element.val() +'</div>');
@@ -17,6 +16,22 @@
         placeholder: settings.placeholder,
         theme: settings.theme
       });
+
+      if (settings.paste_without_formatting) {
+        quill.clipboard.addMatcher(Node.ELEMENT_NODE, function (node, delta) {
+          for (let i = 0; i < delta.ops.length; i++) {
+            if (delta.ops[i].hasOwnProperty('attributes')) {
+              let attributes = Object.keys(delta.ops[i].attributes);
+              for (let k = 0; k < attributes.length; k++) {
+                if (attributes[k] !== 'link') {
+                  delete delta.ops[i].attributes[attributes[k]];
+                }
+              }
+            }
+          }
+          return delta;
+        });
+      }
     },
 
     detach: function (element, format, trigger) {

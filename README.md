@@ -12,29 +12,56 @@ CONTENTS OF THIS FILE
 INTRODUCTION
 ------------
 
-The Quill module is a WYSIWYG rich text editor that uses the [QuillJS](http://quilljs.com/) library.
+The Quill module is a WYSIWYG rich text editor that uses the
+[QuillJS](http://quilljs.com/) library.
 
-Quill is a free, open source WYSIWYG editor built for the modern web. With its modular architecture and expressive API you can completely customize it to fulfill your needs.
+Quill is a free, open source WYSIWYG editor built for the modern web. With its
+modular architecture and expressive API you can completely customize it to
+fulfill your needs.
 
 
 INSTALLATION
 ------------
 
-Firstly, enable the module in the usual manner and the install the QuillJS library using Composer by running:
+Firstly, enable the module in the usual manner and the install the QuillJS
+library using Composer by running:
 
 *composer install*
 
 in the module root directory.
 
-For more information about Composer, please visit https://getcomposer.org/doc/00-intro.md
+For more information about Composer, please visit
+https://getcomposer.org/doc/00-intro.md
 
 
 CONFIGURATION
 -------------
 
-Enable Quill by logging in as an admin user and visiting *admin/config/content/formats*. Either create a new text format or edit an existing text format and from the *Text editor* drop down, select Quill and then click on *Save configuration*.
+Enable Quill by logging in as an admin user and visiting
+*admin/config/content/formats*. Either create a new text format or edit an
+existing text format and from the *Text editor* drop down, select Quill and
+then click on *Save configuration*.
 
-When editing a node, for example, select the new or updated text format in the body text area and Quill will be your text editor.
+When editing a node, for example, select the new or updated text format in the
+body text area and Quill will be your text editor.
+
+### Editor Configuration
+
+#### Placeholder
+The text placeholder for the editor.
+
+Default: `Compose an epic...`
+
+#### Theme
+The [theme](https://quilljs.com/docs/themes/) for the editor.
+
+Default: `snow`
+
+#### Paste Without Formatting
+When enabled, text pasted into the Quill editor will be stripped of
+all formatting.
+
+Default: `FALSE`
 
 
 TO DO

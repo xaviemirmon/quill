@@ -27,6 +27,7 @@ class Quill extends EditorBase {
    */
   public function getDefaultSettings() {
     $settings = [
+      'paste_without_formatting' => FALSE,
       'placeholder' => 'Compose an epic...',
       'theme' => 'snow',
     ];
@@ -40,16 +41,25 @@ class Quill extends EditorBase {
     $settings = $editor->getSettings();
 
     $form['placeholder'] = [
-      '#default_value' => $settings['placeholder'],
       '#title' => $this->t('Placeholder'),
       '#type' => 'textfield',
+      '#default_value' => $settings['placeholder'],
     ];
 
     $form['theme'] = [
-      '#default_value' => $settings['theme'],
-      '#options' => ['bubble' => 'Bubble', 'snow' => 'Snow'],
       '#title' => $this->t('Theme'),
       '#type' => 'select',
+      '#default_value' => $settings['theme'],
+      '#options' => [
+        'bubble' => 'Bubble',
+        'snow' => 'Snow',
+      ],
+    ];
+
+    $form['paste_without_formatting'] = [
+      '#title' => $this->t('Paste Without Formatting'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['paste_without_formatting'],
     ];
 
     return $form;
@@ -59,10 +69,22 @@ class Quill extends EditorBase {
    * {@inheritdoc}
    */
   public function getLibraries(Editor $editor) {
+    $settings = $editor->getSettings();
 
     $libraries = [
       'quill/drupal.quill',
     ];
+
+    switch ($settings['theme']) {
+      case 'bubble':
+        $libraries[] = 'quill/quill.bubble';
+        break;
+
+      case 'snow':
+        $libraries[] = 'quill/quill.snow';
+        break;
+    }
+
     return $libraries;
   }
 
