@@ -3,5 +3,6 @@ type: module
 description: 'WYSIWYG editing for rich text using Quill'
 package: Content Authoring
 core: 8.x
+core_version_requirement: ^8.8 || ^9
 dependencies:
-  - editor
+  - drupal:editor
